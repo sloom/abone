@@ -1,0 +1,30 @@
+{
+    "application_title": {
+        "message": "Fold reshare post",
+        "description": "Fold reshare post"
+    },
+    "application_description": {
+        "message": "Fold reshare post from your main stream.",
+        "description": "Fold reshare post from your main stream."
+    },
+    "icon_tooltip": {
+        "message": "Fold reshare: Click to configuration",
+        "description": "Fold reshare: Click to open configuration"
+    },
+    "display_post_message": {
+        "message": "Display",
+        "description": "Display"
+    },
+    "hide_post_message": {
+        "message": "Hide",
+        "description": "Hide"
+    },
+    "enabled_label_message": {
+        "message": "Enable folding reshare post",
+        "description": "Enable folding reshare post"
+    },
+    "heightSlider_label_message": {
+        "message": "Fold post to following pixel:",
+        "description": "Fold post to follwing pixel:"
+    }
+}

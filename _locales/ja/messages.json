@@ -1,0 +1,30 @@
+{
+    "application_title": {
+        "message": "再共有ミュート",
+        "description": "再共有ミュート"
+    },
+    "application_description": {
+        "message": "メインストリームの再共有ポストを折りたたみます。折りたたまれたポストはマウスオーバーで解除されます。",
+        "description": "メインストリームの再共有ポストを折りたたみます。折りたたまれたポストはマウスオーバーで解除されます。"
+    },
+    "icon_tooltip": {
+        "message": "再共有ミュート:クリックで設定画面を開きます。",
+        "description": "再共有ミュート:クリックで設定画面を開きます。"
+    },
+    "display_post_message": {
+        "message": "表示",
+        "description": "表示"
+    },
+    "hide_post_message": {
+        "message": "非表示",
+        "description": "非表示"
+    },
+    "enabled_label_message": {
+        "message": "再共有ポストを折りたたむ",
+        "description": "再共有ポストを折りたたむ"
+    },
+    "heightSlider_label_message": {
+        "message": "この高さまで折りたたむ(ピクセル)",
+        "description": "この高さまで折りたたむ(ピクセル)"
+    }
+}

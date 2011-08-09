@@ -1,0 +1,14 @@
+.middle * {
+    vertical-align: middle;
+}
+
+.configuration_pane {
+    display: none;
+    font-size: 12px;
+    width: 220px;
+    line-height: 30px;
+}
+
+#heightSliderValue {
+    text-align: center;
+}
