@@ -1,7 +1,7 @@
 {
     "application_title": {
-        "message": "Fold reshare post",
-        "description": "Fold reshare post"
+        "message": "A bone plus(formerly Fold reshare post)",
+        "description": "A bone plus(formerly Fold reshare post)"
     },
     "application_description": {
         "message": "Fold reshare post from your main stream.",
@@ -24,7 +24,15 @@
         "description": "Enable folding reshare post"
     },
     "heightSlider_label_message": {
-        "message": "Fold post to following pixel:",
-        "description": "Fold post to follwing pixel:"
+        "message": "Fold post to",
+        "description": "Fold post to"
+    },
+    "muteUser_tab_label_message": {
+        "message": "NG User",
+        "description": "NG User"
+    },
+    "enabled_tab_label_message": {
+        "message": "General",
+        "description": "General"
     }
 }

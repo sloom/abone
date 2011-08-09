@@ -4,19 +4,25 @@
             type="text/javascript" djConfig="parseOnLoad: true"></script>
     <script src="pageAction.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css"
-          href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/claro/claro.css"/>
+          href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/soria/soria.css"/>
     <link rel="stylesheet" type="text/css" href="pageAction.css"/>
 </head>
-    <body class="claro">
+    <body class="soria">
     <div id="configuration_pane" class="configuration_pane middle">
-        <div id="enableCheckSection">
-            <input id="enabledCheckBox">
-            <label id="enabledLabel" for="enabledCheckBox"></label>
-        </div>
-        <div id="heightSliderSection">
-            <div id="heightSliderLabel"></div>
-            <span id="heightSlider"></span>
-            <span id="heightSliderValue"></span>
+        <div id="tab_container" class="tab_container">
+            <div id="reshare_container" class="reshare_container">
+                <div id="enableCheckSection">
+                    <input id="enabledCheckBox">
+                    <label id="enabledLabel" for="enabledCheckBox"></label>
+                </div>
+                <div id="heightSliderSection">
+                    <div id="heightSliderLabel"></div>
+                    <span id="heightSlider"></span>
+                    <span id="heightSliderValue"></span>
+                </div>
+            </div>
+            <div id="muteUser_container" class="muteUser_container">
+            </div>
         </div>
     </div>
     </body>

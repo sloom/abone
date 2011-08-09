@@ -1,7 +1,7 @@
 {
     "application_title": {
-        "message": "再共有ミュート",
-        "description": "再共有ミュート"
+        "message": "A bone plus(formerly Fold reshare post)",
+        "description": "A bone plus(formerly Fold reshare post)"
     },
     "application_description": {
         "message": "メインストリームの再共有ポストを折りたたみます。折りたたまれたポストはマウスオーバーで解除されます。",
@@ -24,7 +24,15 @@
         "description": "再共有ポストを折りたたむ"
     },
     "heightSlider_label_message": {
-        "message": "この高さまで折りたたむ(ピクセル)",
-        "description": "この高さまで折りたたむ(ピクセル)"
+        "message": "折りたたむ高さ",
+        "description": "折りたたむ高さ"
+    },
+    "muteUser_tab_label_message": {
+        "message": "NGユーザー",
+        "description": "NGユーザー"
+    },
+    "enabled_tab_label_message": {
+        "message": "全般",
+        "description": "全般"
     }
 }
