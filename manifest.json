@@ -1,6 +1,6 @@
 {
     "name": "__MSG_application_title__",
-    "version": "0.0.0.6",
+    "version": "0.0.0.7",
     "description": "__MSG_application_description__",
     "icons": {
         "32" : "img/icon32.png",
