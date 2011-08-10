@@ -37,14 +37,9 @@ dojo.addOnLoad(function() {
     }, "reshare_container");
     tabContainer.addChild(enableContainer);    
 
-    /* 現在の設定値を取得。デフォルトは true */
-    var initialState = background.isEnabled();
-    if (initialState === undefined) {
-        initialState = true;
-    } else {
-        initialState = initialState === "true";
-    }
-    
+    /* 現在の設定値を取得 */
+    var initialState = background.isEnabled() === "true" ;
+
     /* チェックボックス構築 */
     var checkBox = new dijit.form.CheckBox({
         name: "enabled",
@@ -54,20 +49,20 @@ dojo.addOnLoad(function() {
             background.activate(b);
         }
     }, "enabledCheckBox");
-    
+
     /* ---------------------------------------------------- */
     /* 高さ設定スライダー                                   */
     /* ---------------------------------------------------- */
-    
+
     /* 現在の設定値 */
     var initialHeight = parseInt(background.getHeight(), 10);
-    
-    /* スライダー前のラベル */
+
+    /* スライダーのラベルとpx表示の初期値 */
     var heightSliderLabel = chrome.i18n.getMessage("heightSlider_label_message");
     dojo.byId("heightSliderLabel").innerHTML = heightSliderLabel;
     dojo.byId("heightSliderValue").innerHTML = initialHeight + " px";
 
-    /* 高さ設定スライダー */
+    /* 高さ設定スライダーUI構築 */
     var slider = new dijit.form.HorizontalSlider({
         name: "heightSlider",
         value: initialHeight,
@@ -82,7 +77,7 @@ dojo.addOnLoad(function() {
         discreteValues: 110
     },
     "heightSlider");
-    
+
     /* ---------------------------------------------------- */
     /* ユーザーミュートタブ                                 */
     /* ---------------------------------------------------- */

@@ -26,6 +26,11 @@ var activate = function(enable) {
     localStorage.enable = enable;
 }
 
+/**
+ * 再共有ミュートの有効無効を返します。
+ * 戻り値が undefined とならないことは保証されます(値が undefined の場合、デフォルト値の "true"を返します)。
+ * それ以外の場合、ローカルストレージの enable の値をそのまま返します。
+ */
 var isEnabled = function() {
     if (localStorage.enable === undefined) {
         return "true";
