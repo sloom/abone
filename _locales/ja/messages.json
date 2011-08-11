@@ -1,7 +1,7 @@
 {
     "application_title": {
-        "message": "再共有ミュート",
-        "description": "再共有ミュート"
+        "message": "A bone plus(formerly Fold reshare post)",
+        "description": "A bone plus(formerly Fold reshare post)"
     },
     "application_description": {
         "message": "メインストリームの再共有ポストを折りたたみます。折りたたまれたポストはマウスオーバーで解除されます。",
