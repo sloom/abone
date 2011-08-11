@@ -49,13 +49,42 @@ var setHeight = function(value) {
     localStorage.height = value;
 }
 
-var getUnfoldMethod = function(method) {
-    if (localStorage.unfoldMethod === undefined) {
-        return "mouseover";
+
+/**
+ * ミュート対象のユーザー ID 群を文字列で返します。
+ * ローカルストレージの値が undefined の場合、空文字を返します。
+ */
+var getMutedUsers = function() {
+    /* ---- debug ---- */
+    if(true) {
+        var dummyData = {
+            items : [
+                { oid : "111",  link: "<a href='#'>123</a>", isEnable: "true" },
+                { oid : "222",  link: "<a href='#'>222</a>", isEnable: "false" },
+                { oid : "333",  link: "<a href='#'>333</a>", isEnable: "true" },
+                { oid : "444",  link: "<a href='#'>444</a>", isEnable: "true" },
+                { oid : "555",  link: "<a href='#'>555</a>", isEnable: "false" },
+                { oid : "666",  link: "<a href='#'>666</a>", isEnable: "true" },
+                { oid : "777",  link: "<a href='#'>777</a>", isEnable: "true" },
+                { oid : "888",  link: "<a href='#'>888</a>", isEnable: "false" },
+                { oid : "999",  link: "<a href='#'>999</a>", isEnable: "true" },
+                { oid : "000",  link: "<a href='#'>000</a>", isEnable: "true" },
+            ]
+        };
+        return JSON.stringify(dummyData);
     }
-    return localStorage.unfoldMethod;
+    /* ---- debug ---- */
+    
+    if (localStorage.mutedUsers === undefined) {
+        return "";
+    }
+    return localStorage.mutedUsers;
 }
 
-var setUnfoldMethod = function(method) {
-    localStorage.unfoldMethod = method;
+/**
+ * ミュート対象のユーザー ID 群を文字列で指定します。
+ */
+var setMutedUsers = function(mutedUsersStr) {
+    localStorage.mutedUsers = mutedUsersStr;
 }
+

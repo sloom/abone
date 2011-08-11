@@ -21,6 +21,23 @@ div.muteUser_container {
     height: 100%;
 }
 
+div.muteUser_grid {
+    width: 100%;
+    height: 100%;
+}
+
+.dojoxGrid table {
+    margin: 0;
+}
+
+.dojoxGrid-header {
+    display:none;
+}
+
+.muteUser_delete_button {
+    height: 50px;
+}
+
 #heightSliderValue {
     text-align: center;
 }

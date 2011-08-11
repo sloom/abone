@@ -97,5 +97,13 @@
             });
         }
     };
+    
+    /**
+     * ミュート対象ユーザーを追加する。
+     */
+    var addMuteUser = function() {
+        
+    };
+    
     /* メイン処理 */
     setInterval(watchStream, watchInterval);
