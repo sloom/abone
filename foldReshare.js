@@ -29,6 +29,9 @@
      * @returns なし
      */
     var hidePost = function(targetNode) {
+    	if (targetNode.keepOpen) {
+    		return;
+    	}
         /* スタイルの適用(cf. displayPost) */
         var self = this;
         chrome.extension.sendRequest({action:"get_height"}, function(response) {
@@ -54,6 +57,9 @@
         dojo.style(targetNode, "opacity", "1.0");
         dojo.style(targetNode, "overflow", "none");
         dojo.style(targetNode, "height", "auto");
+        dojo.connect(targetNode, "onclick", function() {
+        	targetNode.keepOpen = true;
+        })
         dojo.connect(targetNode, "onmouseleave", function() {
             self.hidePost(targetNode);
         });
