@@ -34,5 +34,9 @@
     "enabled_tab_label_message": {
         "message": "General",
         "description": "General"
+    },
+    "exceptional_label_message": {
+        "message": "Do not fold my post",
+        "description": "Do not fold my post"
     }
 }

@@ -34,5 +34,9 @@
     "enabled_tab_label_message": {
         "message": "全般",
         "description": "全般"
+    },
+    "exceptional_label_message": {
+        "message": "自分のポストは折りたたまない",
+        "description": "自分のポストは折りたたまない"
     }
 }

@@ -1,3 +1,5 @@
+var myOid = "";
+
 chrome.extension.onRequest.addListener(function (request, sender, sendResponse) {
     var response = "";
     switch(request.action) {
@@ -7,11 +9,20 @@ chrome.extension.onRequest.addListener(function (request, sender, sendResponse) 
         case "is_enabled":
             response = isEnabled();
             break;
+        case "is_exceptional_me":
+            response = isExceptionalMe();
+            break;
         case "get_height":
             response = getHeight();
             break;
         case "get_unfold_method":
             response = getUnfoldMethod();
+            break;
+        case "get_my_oid":
+            response = getMyOid();
+            break;
+        case "set_my_oid":
+            response = setMyOid(request);
             break;
         default:
     }
@@ -49,3 +60,22 @@ var setHeight = function(value) {
     localStorage.height = value;
 }
 
+var isExceptionalMe = function() {
+    if (localStorage.isExceptionalMe === undefined) {
+        return "true";
+    }
+    return localStorage.isExceptionalMe;
+}
+
+var setIsExceptionalMe = function(isExceptionalMe) {
+    localStorage.isExceptionalMe = isExceptionalMe;
+}
+
+var setMyOid = function(request) {
+	this.myOid = request.oid;
+	return null;
+}
+
+var getMyOid = function() {
+	return this.myOid;
+}

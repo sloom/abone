@@ -51,6 +51,27 @@ dojo.addOnLoad(function() {
     }, "enabledCheckBox");
 
     /* ---------------------------------------------------- */
+    /* 自分のポストの例外チェックボックス                   */
+    /* ---------------------------------------------------- */
+
+    /* チェックボックス前のラベル */
+    var exceptionalLabel = chrome.i18n.getMessage("exceptional_label_message");
+    dojo.byId("exceptionalLabel").innerHTML = exceptionalLabel;
+
+    /* 現在の設定値を取得 */
+    var initialExceptionalMe = background.isExceptionalMe() === "true" ;
+
+    /* チェックボックス構築 */
+    var isExceptionalMeCheckBox = new dijit.form.CheckBox({
+        name: "isExceptionalMe",
+        value: "isExceptionalMe",
+        checked: initialExceptionalMe,
+        onChange: function(b) {
+            background.setIsExceptionalMe(b);
+        }
+    }, "exceptionalCheckBox");
+    
+    /* ---------------------------------------------------- */
     /* 高さ設定スライダー                                   */
     /* ---------------------------------------------------- */
 
