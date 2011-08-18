@@ -5,9 +5,6 @@ dojo.require("dijit.form.TextBox");
 dojo.require("dijit.layout.TabContainer");
 dojo.require("dijit.layout.ContentPane");
 
-dojo.require("dojox.grid.DataGrid");
-dojo.require("dojo.data.ItemFileWriteStore")
-
 dojo.addOnLoad(function() {
     var background = chrome.extension.getBackgroundPage();
 
@@ -99,75 +96,7 @@ dojo.addOnLoad(function() {
     },
     "heightSlider");
 
-    /* ---------------------------------------------------- */
-    /* ユーザーミュートタブ                                                                                             */
-    /* ---------------------------------------------------- */
-    /* ユーザーミュートのラベル */
-    var muteUserTabLabel = chrome.i18n.getMessage("muteUser_tab_label_message");
-    
-    /* タブになるための ContentPane & タブに追加 */
-    var muteUserContainer = new dijit.layout.ContentPane({
-        title: muteUserTabLabel
-    }, "muteUser_container");
-    tabContainer.addChild(muteUserContainer);    
-
-    /* 現在の設定値の取得。OID およびアンカー要素(元はポストのもの)のフラグメントで構成された JSON */
-    var mutedUsersStr = background.getMutedUsers();
-    var mutedUsers = JSON.parse(mutedUsersStr);
-
-    /* ストア */
-    var store = new dojo.data.ItemFileWriteStore({
-        "data": {
-            "identifier": "oid",
-            "items": mutedUsers.items
-        }
-    });
-
-    /* グリッドのレイアウト */
-    var layout = [
-    {
-        field: '_item',
-        name: '  ',
-        width: '25px',
-        formatter: function(value) {
-            var isEnable = value.isEnable[0];
-            var checkBox = new dijit.form.CheckBox({
-                name: "userEnabled",
-                value: "userEnabled",
-                checked: isEnable === "true",
-                onChange: function(b) {
-                    //background.updateMuteUser()
-                    alert("change to " + b);
-                }
-            });
-            return checkBox;
-        }
-    },
-    {
-        field: 'link',
-        name: 'User',
-        width: '50px'
-    },
-    {
-        field: 'oid',
-        name: 'oid',
-        width: 'auto'
-    }
-    ];
-
-    /* グリッド初期化 */
-    var grid = new dojox.grid.DataGrid({
-        query: {
-            oid: '*'
-        },
-        autoHeight: true,
-        store: store,
-        structure: layout,
-        canSort: false,
-        escapeHTMLInData: false
-    }, document.createElement('div'));
-    dojo.byId("muteUser_grid").appendChild(grid.domNode);
-    grid.startup();
+    /* TODO: NG ユーザー, NG ワード */
 
     /* ---------------------------------------------------- */
     /* その他処理

@@ -5,8 +5,8 @@
     var postsQuery = "div[id^='update']";
 
     /* 自分自身のアンカー(メインストリーム左)を抽出するクエリ */
-    var meQuery = "div.a-Pd-xD > a.d-q-p";
-    
+    var meQuery = "div.a-Dd-wH > a.a-e-j-Sa";
+
     /* ポスト以下でポスト者のアンカーを抽出するクエリ */
     var postOwnerQuery = "a";
 
@@ -14,7 +14,7 @@
     var myOid = "";
 
     /* 共有記事ポストを抽出するクエリ。*/
-    var resharePostsQuery = "div.sz";
+    var resharePostsQuery = "div.Wx";
 
     /* ストリームの監視間隔(ミリ秒) */
     var watchInterval = 1000;
