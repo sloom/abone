@@ -7,9 +7,6 @@
     /* 自分自身のアンカー(メインストリーム左)を抽出するクエリ */
     var meQuery = "div.a-Dd-wH > a.a-e-j-Sa";
 
-    /* ポスト以下でポスト者のアンカーを抽出するクエリ */
-    var postOwnerQuery = "a";
-
     /* 自分の OID */
     var myOid = "";
 
@@ -106,6 +103,8 @@
             && document.location.href.indexOf("notifications") == -1);
     };
 
+    
+    
     /**
      * ポストを監視して必要に応じて折りたたむ。参考) Mute Plus
      */
@@ -134,6 +133,56 @@
             });
         }
     };
+    
+    var watchStream2 = function() {
+        var self = this;
+        if(isTargetPage()) {
+            chrome.extension.sendRequest({action:"show_page_action_icon"}, function() {
+                var divs = document.getElementById("contentPane").getElementsByTagName("div");
+                for(var p = 0; p < divs.length; p++) {
+                    var recentDivID = divs[p].id;
+                    if(recentDivID.substring(0,6) == "update") {
+                        if(recentDivID == previousPostId) {
+                            break;
+                        } else {
+                            previousPostId = recentDivID;
+                            abone2();
+                            break;
+                        }
+                    }
+                });
+            });
+        }
+    };
+
+    var abone2 = function() {
+        var self = this;
+        dojo.query(resharePostsQuery).forEach(function(node, index, arr){
+            var targetNode = node.parentNode.parentNode.parentNode.parentNode;
+            if (!targetNode.forceOpen) {
+                /* 自分のポストでも折りたたむかどうか */
+                chrome.extension.sendRequest({action:"is_exceptional_me"}, function(response) {
+                    var isExceptionalMe = response === "true";
+                    if (isExceptionalMe) {
+                        /* 自分の投稿か確認し、自分のものだったらスキップ */
+                        chrome.extension.sendRequest({action:"get_my_oid"}, function(myOid) {
+                            var anchors = targetNode.getElementsByTagName("a");
+                            for (var a = 0; a < anchors.length; a++) {
+                                var postOwnerOid = anchors[a].getAttribute("oid");
+                                if (postOwnerOid) {
+                                    if (postOwnerOid !== myOid) {
+                                        self.hidePost(targetNode);
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        self.hidePost(targetNode);
+                    }
+                });
+            }
+        });
+    }
 
     var resoloveMyOid = function() {
         var myNodes = dojo.query(meQuery);
