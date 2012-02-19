@@ -1,23 +1,17 @@
 	/* URL */
 	var plusUrl = "https://plus.google.com/";
 
-	/* 各ポストを抽出するクエリ */
-    var postsQuery = "div[id^='update']";
-
     /* 自分自身のアンカー(メインストリーム左)を抽出するクエリ */
-    var meQuery = "div.a-ud-pF > a.a-f-j-Ja";
-
-    /* ポスト以下でポスト者のアンカーを抽出するクエリ */
-    var postOwnerQuery = "a";
+    var meQuery = "a[asrc='miniprofilename']";
 
     /* 自分の OID */
     var myOid = "";
 
     /* 共有記事ポストを抽出するクエリ。*/
-    var resharePostsQuery = "div.gx";
+    var resharePostsQuery = "div.Yt";
 
     /* ストリームの監視間隔(ミリ秒) */
-    var watchInterval = 1000;
+    var watchInterval = 500;
 
     /* 処理済みの先頭ID。処理ループ用 */
     var previousPostId = "";
@@ -28,7 +22,7 @@
     var abone = function() {
         var self = this;
         dojo.query(resharePostsQuery).forEach(function(node, index, arr){
-            var targetNode = node.parentNode.parentNode.parentNode.parentNode;
+            var targetNode = this.resolveTargetNode(node);
             if (!targetNode.forceOpen) {
             	/* 自分のポストでも折りたたむかどうか */
                 chrome.extension.sendRequest({action:"is_exceptional_me"}, function(response) {
@@ -53,6 +47,16 @@
             }
         });
     };
+
+    var resolveTargetNode = function(node) {
+        for (var candidateNode = node; candidateNode = candidateNode.parentNode; candidateNode !== null) {
+            if (candidateNode.id.indexOf('update') === 0) {
+                return candidateNode;
+            }
+        }
+        return null;
+    };
+
 
     /**
      * 指定されたノードを折りたたむ。
@@ -135,21 +139,14 @@
         }
     };
 
-    var resoloveMyOid = function() {
-        var myNodes = dojo.query(meQuery);
-        if (myNodes.length <= 0) {
-            return;
-        }
-        var myHref = myNodes[0].href;
-        var _myOid = myHref.substring(plusUrl.length);
-        myOid = _myOid;
-        chrome.extension.sendRequest({action:"set_my_oid", oid:myOid}, function() {
-        	// no-op
-        });
+    var myNodes = dojo.query(meQuery);
+    if (myNodes.length <= 0) {
+        return;
     }
-
-    /* 自分の OID を解決 */
-    myOid = resoloveMyOid();
-    
-    /* メイン処理 */
-    setInterval(watchStream, watchInterval);
+    var myHref = myNodes[0].href;
+    var myOid = myHref.substring(plusUrl.length);
+    chrome.extension.sendRequest({action:"set_my_oid", oid:myOid}, function() {
+        /* メイン処理 */
+        setInterval(watchStream, watchInterval);
+        }
+    );
